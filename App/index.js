@@ -2,11 +2,20 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { fetchUserRepos } from './api';
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+});
+
 export default class App extends React.Component {
   state = {
     isLoading: true,
     data: [],
-    error: null,
+    error: null
   };
 
   componentDidMount() {
@@ -43,12 +52,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
