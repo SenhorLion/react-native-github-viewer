@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import AppNavigator from './navigation';
 import { fetchUserRepos } from './api';
 
 const styles = StyleSheet.create({
@@ -41,14 +42,16 @@ export default class App extends React.Component {
   };
 
   render() {
-    const { data, error, isLoading } = this.state;
+    // const { data, error, isLoading } = this.state;
 
-    return (
-      <View style={styles.container}>
-        {isLoading && <Text>Loading...</Text>}
-        {error && <Text>Error: {error}</Text>}
-        {!isLoading && data.length && data.map(this.renderItem)}
-      </View>
-    );
+    // return (
+    //   <View style={styles.container}>
+    //     {isLoading && <Text>Loading...</Text>}
+    //     {error && <Text>Error: {error}</Text>}
+    //     {!isLoading && data.length && data.map(this.renderItem)}
+    //   </View>
+    // );
+
+    return <AppNavigator />;
   }
 }
