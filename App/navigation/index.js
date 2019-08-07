@@ -24,7 +24,7 @@ const MainAppStack = createStackNavigator(
 );
 
 const AppNavigator = createSwitchNavigator({
-  Login: LoginScreen,
+  // Login: LoginScreen,
   Main: MainAppStack
 });
 
