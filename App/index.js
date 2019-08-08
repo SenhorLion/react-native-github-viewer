@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import AppNavigator from './navigation';
-import { fetchUserRepos } from './api';
+import { fetchUserRepos, fetchUserBio } from './api';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,11 +16,13 @@ export default class App extends React.Component {
   state = {
     isLoading: true,
     data: [],
+    profile: [],
     error: null
   };
 
   componentDidMount() {
     this.fetchRepos();
+    this.fetchProfile();
   }
 
   fetchRepos = async () => {
@@ -30,6 +32,15 @@ export default class App extends React.Component {
       this.setState({ data: [...userRepos], error: null, isLoading: false });
     } catch (error) {
       this.setState({ data: [], error: error.message, isLoading: false });
+    }
+  };
+  fetchProfile = async () => {
+    try {
+      const userProfile = await fetchUserBio('senhorlion');
+
+      this.setState({ profile: [...userProfile], error: null, isLoading: false });
+    } catch (error) {
+      this.setState({ profile: [], error: error.message, isLoading: false });
     }
   };
 
